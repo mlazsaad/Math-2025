@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تاريخ الأعداد - الأنظمة العددية | History of Numbers - Numeral Systems</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --background-color: #f5f6fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-date {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .english-term {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .interactive-section {
+            margin: 2rem 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .tally-marks {
+            display: flex;
+            gap: 10px;
+            margin: 1rem 0;
+            font-size: 24px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-color);
+        }
+
+        .note {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .system-details {
+            padding: 15px;
+            margin-top: 10px;
+            background: #f1f5f9;
+            border-radius: 5px;
+            border-right: 4px solid var(--secondary-color);
+        }
+
+        .interactive-demo {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 5px;
+        }
+
+        .interactive-demo.active {
+            display: block;
+        }
+
+        .try-it-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 8px 15px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .token-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .token {
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .token img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .token-phases {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .phase {
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .phase-date {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .concept-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .babylonian-number {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .babylonian-number img {
+            max-width: 300px;
+            margin-bottom: 15px;
+        }
+
+        .converter-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 15px;
+        }
+
+        #decimal-input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        #babylonian-result {
+            min-height: 50px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+        }
+
+        .symbols-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .symbol {
+            text-align: center;
+            padding: 10px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .symbol img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .properties {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .property {
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .egyptian-number {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-family: 'Noto Sans Egyptian Hieroglyphs', serif;
+            font-size: 24px;
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .max-number {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .comparison-table {
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>تاريخ الأعداد - الأنظمة العددية</h1>
+        <h2>History of Numbers - Numeral Systems</h2>
+
+        <div class="interactive-section">
+            <h3>المقدمة | Introduction</h3>
+            <p>في هذا الدرس سنتعرف على تاريخ الأنظمة العددية وتطورها عبر الزمن، بداية من النظام الأحادي البسيط وصولاً إلى الأنظمة المتقدمة. نستكشف كيف تطورت طرق العد والحساب عبر الحضارات المختلفة وكيف أثرت على تطور الرياضيات والعلوم.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>العصور ما قبل التاريخ | Prehistoric Era</h3>
+                <div class="timeline-date">قبل 4000 ق.م</div>
+                <p>النظام الأحادي <span class="english-term">(Tally System)</span></p>
+                <div class="system-details">
+                    <h4>النظام الأحادي</h4>
+                    <p>أول نظام عددي استخدمه الإنسان، اعتمد على العد البسيط باستخدام العلامات الفردية. استخدم الإنسان البدائي أصابع يديه للعد، ثم تطور إلى استخدام العلامات على الخشب والعظام وجدران الكهوف.</p>
+                    <div class="tally-marks">
+                        <span>|</span>
+                        <span>||</span>
+                        <span>|||</span>
+                        <span>||||</span>
+                        <span>||||</span>
+                    </div>
+                    <button class="try-it-btn" onclick="showTallyDemo()">جرب العد بالعلامات</button>
+                    <div id="tally-demo" class="interactive-demo">
+                        <p>أضف علامات للعد:</p>
+                        <div id="tally-container"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>الحضارة السومرية | Sumerian Civilization</h3>
+                <div class="timeline-date">4000 - 3100 ق.م</div>
+                <p>نظام العد السومري <span class="english-term">(Sumerian Numeral System)</span></p>
+                <div class="system-details">
+                    <h4>تطور النظام العددي السومري</h4>
+                    <div class="token-phases">
+                        <div class="phase">
+                            <div class="phase-header">
+                                <h5>المرحلة الأولى: الرموز البسيطة (Plain Tokens)</h5>
+                                <div class="phase-date">8000 - 4000 ق.م</div>
+                            </div>
+                            <p>استخدم السومريون قطع طينية بأشكال مختلفة لتمثيل السلع المختلفة:</p>
+                            <div class="token-display">
+                                <div class="token">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Clay_counting_token.jpg/220px-Clay_counting_token.jpg" alt="رمز دائري">
+                                    <p>رمز دائري: يمثل وحدة من الحبوب</p>
+                                </div>
+                                <div class="token">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Clay_envelope_tokens_Louvre_Sb1932.jpg/220px-Clay_envelope_tokens_Louvre_Sb1932.jpg" alt="رمز مخروطي">
+                                    <p>رمز مخروطي: يمثل كمية أكبر من الحبوب</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="phase">
+                            <div class="phase-header">
+                                <h5>المرحلة الثانية: الرموز المركبة (Complex Tokens)</h5>
+                                <div class="phase-date">4000 - 3700 ق.م</div>
+                            </div>
+                            <p>تطور النظام ليشمل رموزاً منقوشة وملونة لتمثيل سلع مختلفة:</p>
+                            <ul>
+                                <li>استخدام الألوان المختلفة لتمييز السلع</li>
+                                <li>إضافة نقوش على الرموز لتمييز الكميات</li>
+                                <li>تطوير رموز خاصة للسلع المختلفة</li>
+                            </ul>
+                        </div>
+
+                        <div class="phase">
+                            <div class="phase-header">
+                                <h5>المرحلة الثالثة: المغلفات الطينية (Clay Envelopes)</h5>
+                                <div class="phase-date">3700 - 3200 ق.م</div>
+                            </div>
+                            <p>تم تطوير نظام المغلفات الطينية لحفظ وتوثيق المعاملات:</p>
+                            <ul>
+                                <li>وضع الرموز داخل مغلفات طينية مجوفة</li>
+                                <li>طباعة أشكال الرموز على السطح الخارجي للمغلف</li>
+                                <li>استخدام الأختام للتوثيق</li>
+                                <li>تطوير نظام للتسجيل والحفظ</li>
+                            </ul>
+                        </div>
+
+                        <div class="phase">
+                            <div class="phase-header">
+                                <h5>المرحلة الرابعة: الألواح الطينية والكتابة المسمارية</h5>
+                                <div class="phase-date">3200 - 539 ق.م</div>
+                            </div>
+                            <p>تطور النظام إلى الكتابة المسمارية على الألواح الطينية:</p>
+                            <ul>
+                                <li>استخدام الألواح الطينية بدلاً من المغلفات</li>
+                                <li>تطوير الكتابة المسمارية (Cuneiform)</li>
+                                <li>استخدام القلم المدبب (Stylus) للكتابة</li>
+                                <li>تبسيط نظام الترميز</li>
+                            </ul>
+                            <p>أدى هذا التطور إلى نشأة أول نظام كتابة في التاريخ، والذي استخدم أساساً لأغراض اقتصادية وتجارية.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>الحضارة البابلية | Babylonian Civilization</h3>
+                <div class="timeline-date">3100 - 539 ق.م</div>
+                <p>النظام الستيني <span class="english-term">(Sexagesimal System)</span></p>
+                <div class="system-details">
+                    <h4>النظام العددي البابلي</h4>
+                    <p>يعتبر النظام العددي البابلي من أهم الأنظمة العددية في التاريخ، حيث قدم ثلاثة مفاهيم رئيسية ما زالت تستخدم حتى اليوم:</p>
+                    
+                    <div class="concept-section">
+                        <h5>1. القيمة المكانية (Positional Value System)</h5>
+                        <p>قيمة الرقم لا تعتمد فقط على شكله، بل أيضاً على موقعه. على سبيل المثال:</p>
+                        <ul>
+                            <li>المسمار الواحد في الخانة الأولى = 1</li>
+                            <li>نفس المسمار في الخانة الثانية = 60</li>
+                            <li>نفس المسمار في الخانة الثالثة = 3600</li>
+                        </ul>
+                    </div>
+
+                    <div class="concept-section">
+                        <h5>2. النظام الستيني (Base-60 System)</h5>
+                        <p>استخدم البابليون الأساس 60 في نظامهم العددي:</p>
+                        <ul>
+                            <li>كل خانة لا يمكن أن تحتوي على رقم أكبر من 59</li>
+                            <li>عند الوصول إلى 60، يتم الانتقال إلى الخانة التالية</li>
+                            <li>ما زال هذا النظام مستخدماً في:</li>
+                            <ul>
+                                <li>قياس الوقت (60 ثانية في الدقيقة، 60 دقيقة في الساعة)</li>
+                                <li>قياس الزوايا (360 درجة في الدائرة)</li>
+                            </ul>
+                        </ul>
+                    </div>
+
+                    <div class="concept-section">
+                        <h5>3. حافظ المكان (Place Holder)</h5>
+                        <p>ابتكر البابليون نظام حفظ المكان لتوضيح القيم المكانية:</p>
+                        <ul>
+                            <li>استخدام علامتي مسمار مائلتين للإشارة إلى الخانة الفارغة</li>
+                            <li>هذا المفهوم كان سابقاً لفكرة الصفر</li>
+                            <li>ساعد في تمييز القيم المكانية للأرقام</li>
+                        </ul>
+                    </div>
+
+                    <div class="number-example">
+                        <h5>مثال على الأعداد البابلية:</h5>
+                        <div class="babylonian-number">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Babylonian_numerals.svg/440px-Babylonian_numerals.svg.png" alt="أمثلة على الأرقام البابلية">
+                            <p>الرموز الأساسية في النظام البابلي:</p>
+                            <ul>
+                                <li>𒁹 = 1 (مسمار عمودي واحد)</li>
+                                <li>𒌋 = 10 (مسمار مائل)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="interactive-section">
+                        <button class="try-it-btn" onclick="showBabylonianConverter()">جرب تحويل الأرقام إلى النظام الستيني</button>
+                        <div id="babylonian-converter" class="interactive-demo">
+                            <div class="converter-container">
+                                <input type="number" id="decimal-input" placeholder="أدخل رقماً عشرياً">
+                                <div id="babylonian-result"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note">
+                        <p><strong>ملاحظة:</strong> لم يكن لدى البابليين مفهوم الصفر في البداية، لكن نظامهم كان متقدماً جداً لدرجة أنه ما زال يؤثر على حياتنا اليومية حتى الآن.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>الحضارة المصرية | Egyptian Civilization</h3>
+                <div class="timeline-date">3000 ق.م - 100 م</div>
+                <p>النظام الهيروغليفي <span class="english-term">(Hieroglyphic Numeral System)</span></p>
+                <div class="system-details">
+                    <h4>النظام العددي المصري القديم</h4>
+                    <p>ظهر النظام العددي المصري حوالي عام 3000 ق.م مع توحيد مصر العليا والسفلى، واستمر استخدامه حتى حوالي 100-200 ميلادية.</p>
+
+                    <div class="concept-section">
+                        <h5>خصائص النظام العددي المصري</h5>
+                        <div class="properties">
+                            <div class="property">
+                                <h6>1. نظام إضافي (Additive System)</h6>
+                                <p>على عكس النظام البابلي، لا يعتمد على القيمة المكانية للرقم. قيمة كل رمز ثابتة بغض النظر عن موقعه.</p>
+                            </div>
+                            <div class="property">
+                                <h6>2. نظام عشري (Base-10)</h6>
+                                <p>كل رمز يمثل عشرة أضعاف الرمز السابق له.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="number-symbols">
+                        <h5>الرموز الأساسية</h5>
+                        <div class="symbols-grid">
+                            <div class="symbol">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/EgyptianNumberOne.svg/100px-EgyptianNumberOne.svg.png" alt="واحد">
+                                <p>1 (خط عمودي)</p>
+                            </div>
+                            <div class="symbol">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/EgyptianNumberTen.svg/100px-EgyptianNumberTen.svg.png" alt="عشرة">
+                                <p>10 (قوس)</p>
+                            </div>
+                            <div class="symbol">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/EgyptianNumberHundred.svg/100px-EgyptianNumberHundred.svg.png" alt="مائة">
+                                <p>100 (لفة حبل)</p>
+                            </div>
+                            <div class="symbol">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/EgyptianNumberThousand.svg/100px-EgyptianNumberThousand.svg.png" alt="ألف">
+                                <p>1,000 (زهرة اللوتس)</p>
+                            </div>
+                            <div class="symbol">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/EgyptianNumberTenThousand.svg/100px-EgyptianNumberTenThousand.svg.png" alt="عشرة آلاف">
+                                <p>10,000 (إصبع)</p>
+                            </div>
+                            <div class="symbol">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/EgyptianNumberHundredThousand.svg/100px-EgyptianNumberHundredThousand.svg.png" alt="مائة ألف">
+                                <p>100,000 (ضفدع)</p>
+                            </div>
+                            <div class="symbol">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/EgyptianNumberMillion.svg/100px-EgyptianNumberMillion.svg.png" alt="مليون">
+                                <p>1,000,000 (إله جالس)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="number-example">
+                        <h5>مثال على أكبر رقم في النظام:</h5>
+                        <div class="max-number">
+                            <p>9,999,999 = تسعة ملايين وتسعمائة وتسعة وتسعون ألفاً وتسعمائة وتسعة وتسعون</p>
+                            <div class="number-visualization">
+                                <div class="egyptian-number">
+                                    <span>𓁨 𓁨 𓁨 𓁨 𓁨 𓁨 𓁨 𓁨 𓁨</span> <!-- 9 millions -->
+                                    <span>𓆼 𓆼 𓆼 𓆼 𓆼 𓆼 𓆼 𓆼 𓆼</span> <!-- 900,000 -->
+                                    <span>𓂭 𓂭 𓂭 𓂭 𓂭 𓂭 𓂭 𓂭 𓂭</span> <!-- 90,000 -->
+                                    <span>𓆐 𓆐 𓆐 𓆐 𓆐 𓆐 𓆐 𓆐 𓆐</span> <!-- 9,000 -->
+                                    <span>𓌅 𓌅 𓌅 𓌅 𓌅 𓌅 𓌅 𓌅 𓌅</span> <!-- 900 -->
+                                    <span>𓎆 𓎆 𓎆 𓎆 𓎆 𓎆 𓎆 𓎆 𓎆</span> <!-- 90 -->
+                                    <span>𓏤 𓏤 𓏤 𓏤 𓏤 𓏤 𓏤 𓏤 𓏤</span> <!-- 9 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note">
+                        <h5>ملاحظات مهمة:</h5>
+                        <ul>
+                            <li>لا يعتمد النظام على القيمة المكانية (Positional Value)</li>
+                            <li>لا يحتاج إلى حافظ مكان (Place Holder)</li>
+                            <li>يمكن كتابة نفس الرقم بترتيبات مختلفة للرموز</li>
+                            <li>أقصى رقم يمكن تمثيله هو 9,999,999</li>
+                            <li>سهل في عمليات الجمع والطرح لكن أصعب في الضرب والقسمة</li>
+                        </ul>
+                    </div>
+
+                    <div class="interactive-section">
+                        <button class="try-it-btn" onclick="showEgyptianConverter()">جرب تحويل الأرقام إلى النظام المصري القديم</button>
+                        <div id="egyptian-converter" class="interactive-demo">
+                            <div class="converter-container">
+                                <input type="number" id="decimal-input-egyptian" placeholder="أدخل رقماً (حتى 9,999,999)">
+                                <div id="egyptian-result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>الحضارة الرومانية | Roman Civilization</h3>
+                <div class="timeline-date">900 ق.م - 1400 م</div>
+                <p>النظام العددي الروماني <span class="english-term">(Roman Numeral System)</span></p>
+                <div class="system-details">
+                    <h4>خصائص النظام العددي الروماني</h4>
+                    <p>ظهر النظام العددي الروماني حوالي سنة 900 قبل الميلاد واستمر حتى القرن الرابع عشر الميلادي. يتميز هذا النظام باستخدام الحروف اللاتينية للتعبير عن القيم العددية.</p>
+
+                    <div class="concept-section">
+                        <h5>الرموز الأساسية:</h5>
+                        <div class="token-display">
+                            <div class="token">I = 1</div>
+                            <div class="token">V = 5</div>
+                            <div class="token">X = 10</div>
+                            <div class="token">L = 50</div>
+                            <div class="token">C = 100</div>
+                            <div class="token">D = 500</div>
+                            <div class="token">M = 1000</div>
+                        </div>
+
+                        <h5>خصائص النظام:</h5>
+                        <ul>
+                            <li>نظام إضافي (Additive System) مع إمكانية الطرح في بعض الحالات</li>
+                            <li>يتناوب بين النظام الخماسي والثنائي (Base-5 and Base-2 alternation)</li>
+                            <li>الرموز السوداء (I, X, C, M) يمكن تكرارها حتى 4 مرات</li>
+                            <li>الرموز الزرقاء (V, L, D) لا يمكن تكرارها أكثر من مرة واحدة</li>
+                        </ul>
+
+                        <h5>طريقة الطرح:</h5>
+                        <p>تم تطوير طريقة الطرح لتقليل عدد الرموز المستخدمة. على سبيل المثال:</p>
+                        <div class="token-display">
+                            <div class="token">IV = 4 (5-1)</div>
+                            <div class="token">IX = 9 (10-1)</div>
+                            <div class="token">XL = 40 (50-10)</div>
+                            <div class="token">XC = 90 (100-10)</div>
+                            <div class="token">CD = 400 (500-100)</div>
+                            <div class="token">CM = 900 (1000-100)</div>
+                        </div>
+
+                        <h5>أكبر رقم في النظام:</h5>
+                        <p>في النظام التقليدي: 4999 (MMMMCMXCIX)</p>
+                        <p>في نظام الطرح المتأخر: 3999 (MMMCMXCIX)</p>
+
+                        <div class="note">
+                            <p>ملاحظة: تم تطوير نظام الخط العلوي لتمثيل الأرقام الأكبر، حيث يضاعف قيمة الرقم بألف عند وضع خط فوقه.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>تاريخ تطور الأرقام الهندية العربية | History of Hindu-Arabic Numerals</h3>
+                <div class="system-details">
+                    <div class="concept-section">
+                        <h4>المراحل التاريخية الرئيسية</h4>
+                        
+                        <div class="timeline-section">
+                            <h5>النشأة في الهند (200 ق.م - 400 م)</h5>
+                            <ul>
+                                <li>بداية تطور الأرقام في الهند منذ القرن الثاني قبل الميلاد</li>
+                                <li>وصول النظام لمرحلة النضج في بداية القرن الخامس الميلادي</li>
+                                <li>تطور مفهوم القيمة المكانية والصفر تدريجياً</li>
+                            </ul>
+
+                            <h5>الانتقال إلى العالم الإسلامي (750 - 850 م)</h5>
+                            <ul>
+                                <li>انتقال الأرقام من الهند إلى بغداد في عهد الدولة العباسية</li>
+                                <li>تأسيس بيت الحكمة كمركز علمي عالمي</li>
+                                <li>إسهامات الخوارزمي (780-850 م):
+                                    <ul>
+                                        <li>كتاب "الجمع والتفريق بحساب الهندو" (825 م)</li>
+                                        <li>كتاب "المختصر في حساب الجبر والمقابلة" (830 م)</li>
+                                    </ul>
+                                </li>
+                                <li>إسهامات الكندي في نشر استخدام الأرقام الهندية</li>
+                            </ul>
+
+                            <h5>الانتقال إلى أوروبا (900 - 1500 م)</h5>
+                            <ul>
+                                <li>ظهور الأرقام في أوروبا عبر الأندلس في بداية القرن العاشر</li>
+                                <li>إسهامات فيبوناتشي (1202 م):
+                                    <ul>
+                                        <li>كتاب "الحساب" لتعريف التجار بأهمية الأرقام العربية</li>
+                                        <li>مقارنة بين النظام الروماني والعربي</li>
+                                    </ul>
+                                </li>
+                                <li>مقاومة أولية في أوروبا:
+                                    <ul>
+                                        <li>منع استخدام الأرقام العربية في فلورنسا (1299 م)</li>
+                                        <li>استمرار استخدام الأرقام الرومانية لفترة طويلة</li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <h5>الانتشار العالمي (1500 - 1900 م)</h5>
+                            <ul>
+                                <li>اختراع الطباعة (1482 م) ساهم في انتشار الأرقام العربية</li>
+                                <li>اعتماد الأرقام في روسيا في بداية القرن الثامن عشر</li>
+                                <li>اعتماد الأرقام في الصين في بداية القرن العشرين</li>
+                            </ul>
+                        </div>
+
+                        <div class="note">
+                            <h5>أحداث تاريخية مؤثرة:</h5>
+                            <ul>
+                                <li>سقوط بغداد (1258 م):
+                                    <ul>
+                                        <li>نهاية العصر الذهبي للعلوم في العالم الإسلامي</li>
+                                        <li>فقدان كم هائل من المعرفة والكتب العلمية</li>
+                                    </ul>
+                                </li>
+                                <li>فتح القسطنطينية (1453 م):
+                                    <ul>
+                                        <li>انتقال العلماء والمعرفة إلى غرب أوروبا</li>
+                                        <li>المساهمة في بداية عصر النهضة الأوروبية</li>
+                                    </ul>
+                                </li>
+                                <li>سقوط الأندلس (1492 م):
+                                    <ul>
+                                        <li>انتقال التراث العلمي الإسلامي إلى أوروبا</li>
+                                        <li>تأثير كبير على تطور العلوم في أوروبا</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>النظام العددي الهندي العربي | Hindu-Arabic Numeral System</h3>
+                <div class="system-details">
+                    <h4>خصائص النظام العددي من 1 إلى 9</h4>
+                    
+                    <div class="concept-section">
+                        <h5>المميزات الأساسية:</h5>
+                        <ul>
+                            <li>نظام عشري (Base-10)</li>
+                            <li>نظام موضعي (Positional)</li>
+                            <li>يستخدم حافظ المكان (Placeholder - الصفر)</li>
+                            <li><strong>الميزة العبقرية:</strong> رمز مختلف لكل قيمة عددية أقل من الأساس</li>
+                        </ul>
+
+                        <div class="number-example">
+                            <h5>مقارنة كتابة الرقم 93 في الأنظمة المختلفة:</h5>
+                            <div class="comparison-table">
+                                <table>
+                                    <tr>
+                                        <th>النظام</th>
+                                        <th>كتابة الرقم 93</th>
+                                        <th>التفسير</th>
+                                    </tr>
+                                    <tr>
+                                        <td>الهندي العربي</td>
+                                        <td>93</td>
+                                        <td>رمزان فقط: 9 في خانة العشرات و 3 في خانة الآحاد</td>
+                                    </tr>
+                                    <tr>
+                                        <td>الروماني</td>
+                                        <td>LXXXXIII</td>
+                                        <td>تكرار للرموز: LXXXX (90) + III (3)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>البابلي</td>
+                                        <td>[رموز بابلية]</td>
+                                        <td>تكرار للرموز: 1 في خانة الستينات + 3 عشرات + 3 آحاد</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <h5>مميزات النظام:</h5>
+                        <ul>
+                            <li>منع التكرار في كتابة الأرقام</li>
+                            <li>اختصار المساحة المطلوبة لكتابة الأعداد</li>
+                            <li>تسهيل العمليات الحسابية</li>
+                            <li>إمكانية تطبيق النظام على أي أساس (Base) آخر</li>
+                        </ul>
+
+                        <div class="note">
+                            <h6>ملاحظات مهمة:</h6>
+                            <ul>
+                                <li>الصفر كحافظ مكان (Placeholder) يختلف عن الصفر كقيمة عددية</li>
+                                <li>وظيفة حافظ المكان هي تحديد قيمة الخانة للأرقام المجاورة</li>
+                                <li>النظام يمكن تطبيقه على أي أساس (مثل النظام الثنائي في الحاسوب)</li>
+                            </ul>
+                        </div>
+
+                        <div class="concept-section">
+                            <h5>تطور النظام:</h5>
+                            <p>استغرق تطور النظام وفهم إمكانياته الكاملة حوالي ألف سنة، خاصة في:</p>
+                            <ul>
+                                <li>فهم الفرق بين الصفر كحافظ مكان والصفر كقيمة عددية</li>
+                                <li>تطبيق النظام على أسس مختلفة (مثل النظام الثنائي)</li>
+                                <li>تطوير العمليات الحسابية المعقدة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <h3>مقارنة بين الأنظمة العددية | Comparison of Numeral Systems</h3>
+                <div class="system-details">
+                    <h4>مقارنة بين النظام البابلي والمصري والروماني</h4>
+                    
+                    <div class="concept-section">
+                        <h5>الفرق بين الرقم والعدد:</h5>
+                        <ul>
+                            <li>الرقم (Digit): الوحدات الأساسية التي يتكون منها النظام العددي</li>
+                            <li>العدد (Number): مجموعة من الأرقام مرتبة بشكل معين لتمثيل قيمة عددية</li>
+                        </ul>
+
+                        <h5>مقارنة الرموز الأساسية:</h5>
+                        <div class="comparison-table">
+                            <table>
+                                <tr>
+                                    <th>النظام</th>
+                                    <th>الرموز الأساسية</th>
+                                    <th>خصائص النظام</th>
+                                </tr>
+                                <tr>
+                                    <td>البابلي</td>
+                                    <td>رمزان فقط (1, 10)</td>
+                                    <td>
+                                        - نظام ستيني (Base-60)<br>
+                                        - نظام موضعي (Positional)<br>
+                                        - الرموز أقل من الأساس (Base)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>المصري</td>
+                                    <td>سبعة رموز (1, 10, 100, 1000, ...)</td>
+                                    <td>
+                                        - نظام عشري (Base-10)<br>
+                                        - نظام تجميعي (Additive)<br>
+                                        - يحتوي على رموز أكبر من الأساس
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>الروماني</td>
+                                    <td>سبعة رموز (I, V, X, L, C, D, M)</td>
+                                    <td>
+                                        - مزيج من النظام الخماسي والثنائي<br>
+                                        - نظام تجميعي وطرحي<br>
+                                        - يحتوي على رموز أكبر من الأساس
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <h5>مميزات وعيوب كل نظام:</h5>
+                        <div class="system-comparison">
+                            <h6>النظام البابلي:</h6>
+                            <ul>
+                                <li>مرونة في تمثيل الأعداد الكبيرة بسبب النظام الموضعي</li>
+                                <li>عدد محدود من الرموز يسهل تعلمها</li>
+                                <li>يمكن تمثيل أي عدد مهما كبر</li>
+                            </ul>
+
+                            <h6>النظام المصري والروماني:</h6>
+                            <ul>
+                                <li>محدودية في تمثيل الأعداد الكبيرة</li>
+                                <li>يحتاج لرموز جديدة لتمثيل القيم الأكبر</li>
+                                <li>صعوبة في إجراء العمليات الحسابية</li>
+                            </ul>
+                        </div>
+
+                        <div class="note">
+                            <p>ملاحظة مهمة: النظام الموضعي (Positional) يعتبر أكثر كفاءة من النظام التجميعي (Additive) لأنه:</p>
+                            <ul>
+                                <li>يحتاج لعدد أقل من الرموز</li>
+                                <li>يمكن تمثيل أي عدد مهما كبر</li>
+                                <li>يسهل إجراء العمليات الحسابية</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <p><strong>ملاحظة هامة:</strong> التواريخ المذكورة تقريبية وقد تختلف حسب المصادر المختلفة بفارق 100-400 سنة.</p>
+        </div>
+    </div>
+
+    <script>
+        function showTallyDemo() {
+            const demo = document.getElementById('tally-demo');
+            demo.classList.toggle('active');
+        }
+
+        function showBabylonianConverter() {
+            const converter = document.getElementById('babylonian-converter');
+            converter.classList.toggle('active');
+        }
+
+        function showEgyptianConverter() {
+            const converter = document.getElementById('egyptian-converter');
+            converter.classList.toggle('active');
+        }
+
+        // Add event listener to input for converting numbers
+        document.getElementById('decimal-input')?.addEventListener('input', function(e) {
+            const decimal = parseInt(e.target.value);
+            if (isNaN(decimal)) {
+                document.getElementById('babylonian-result').textContent = '';
+                return;
+            }
+            
+            let result = convertToBabylonian(decimal);
+            document.getElementById('babylonian-result').textContent = result;
+        });
+
+        document.getElementById('decimal-input-egyptian')?.addEventListener('input', function(e) {
+            const decimal = parseInt(e.target.value);
+            if (isNaN(decimal) || decimal > 9999999) {
+                document.getElementById('egyptian-result').textContent = 'الرقم يجب أن يكون أقل من 9,999,999';
+                return;
+            }
+            
+            let result = convertToEgyptian(decimal);
+            document.getElementById('egyptian-result').innerHTML = result;
+        });
+
+        function convertToBabylonian(decimal) {
+            if (decimal === 0) return "0";
+            
+            let number = decimal;
+            let positions = [];
+            
+            while (number > 0) {
+                positions.unshift(number % 60);
+                number = Math.floor(number / 60);
+            }
+            
+            return positions.map(n => {
+                let result = '';
+                let tens = Math.floor(n / 10);
+                let ones = n % 10;
+                
+                // Add tens (𒌋 = 10)
+                for (let i = 0; i < tens; i++) {
+                    result += '𒌋';
+                }
+                
+                // Add ones (𒁹 = 1)
+                for (let i = 0; i < ones; i++) {
+                    result += '𒁹';
+                }
+                
+                return result || ' ';
+            }).join(' ; ');
+        }
+
+        function convertToEgyptian(decimal) {
+            const symbols = {
+                1000000: '𓁨',
+                100000: '𓆼',
+                10000: '𓂭',
+                1000: '𓆐',
+                100: '𓌅',
+                10: '𓎆',
+                1: '𓏤'
+            };
+
+            let result = '';
+            let number = decimal;
+
+            for (let value of Object.keys(symbols).map(Number).sort((a, b) => b - a)) {
+                const count = Math.floor(number / value);
+                if (count > 0) {
+                    result += `<div>${symbols[value].repeat(count)}</div>`;
+                    number %= value;
+                }
+            }
+
+            return result || '0';
+        }
+    </script>
+</body>
+</html>
