@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أساسيات علم الجبر - مجموعات الأعداد</title>
+    <style>
+        :root {
+            --primary-color: #34495e;
+            --secondary-color: #3498db;
+            --accent-color: #16a085;
+            --background-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            --gradient-primary: linear-gradient(135deg, #34495e, #2c3e50);
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --note-bg: #e8f6f3;
+            --note-border: #16a085;
+            --example-bg: #f7f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #ecf0f1, #f5f6fa);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: var(--border-radius);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+        }
+
+        .video-controls {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .number-set {
+            background: var(--card-bg);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border-right: 5px solid var(--accent-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .number-set:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .number-set h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        .content-section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .content-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+
+        .number-set h3 .symbol {
+            background: var(--secondary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+
+        .number-set p {
+            margin-bottom: 15px;
+        }
+
+        .example {
+            background: var(--example-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin: 15px 0;
+            border: 1px solid rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .example::before {
+            content: 'مثال';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            border-bottom-left-radius: var(--border-radius);
+        }
+
+        .example ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .example ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .example ul li:last-child {
+            border-bottom: none;
+        }
+
+        .example ul li:hover {
+            padding-right: 10px;
+            background: rgba(0,0,0,0.02);
+        }
+
+        .math-symbol {
+            font-family: 'Times New Roman', serif;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .note {
+            background: var(--note-bg);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin: 15px 0;
+            border-right: 5px solid var(--note-border);
+            position: relative;
+            padding-right: 35px;
+        }
+
+        .symbol-origin {
+            background: rgba(52, 73, 94, 0.1);
+            border-right-color: #34495e;
+        }
+
+        .pi-detailed-info {
+            margin: 20px 0;
+        }
+
+        .collapsible-button {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            text-align: right;
+            outline: none;
+            font-size: 1.1rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .collapsible-button:after {
+            content: '▼';
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: 0.3s;
+        }
+
+        .collapsible-button.active:after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        .collapsible-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: white;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+
+        .collapsible-content.active {
+            max-height: 2000px;
+        }
+
+        .info-section {
+            padding: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .info-section:last-child {
+            border-bottom: none;
+        }
+
+        .info-section h4 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-section ul li {
+            padding: 8px 0;
+            padding-right: 20px;
+            position: relative;
+        }
+
+        .info-section ul li:before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: var(--accent-color);
+        }
+
+        .complex-definition ul li {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .complex-examples {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: var(--border-radius);
+        }
+
+        .complex-image {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .math-diagram {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .image-caption {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .complex-examples ul li {
+            padding: 5px 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        .complex-examples ul li:last-child {
+            border-bottom: none;
+        }
+
+        .note::before {
+            content: '⚠️';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        .special-number {
+            background: linear-gradient(135deg, rgba(41, 98, 255, 0.1), rgba(0, 0, 0, 0.05));
+            border-right-color: #9c27b0;
+        }
+
+        .video-container {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .video-controls {
+            color: white;
+            font-size: 1rem;
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .video-controls span {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-controls span:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .symbol {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-left: 10px;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>أساسيات علم الجبر</h1>
+            <h2>مجموعات الأعداد</h2>
+        </div>
+
+
+        <div class="number-set">
+            <h3><span class="symbol">N</span> مجموعة الأعداد الطبيعية Natural Numbers</h3>
+            <p>هي الأعداد التي نستخدمها في حياتنا اليومية (Numbers used in daily life)، مثل عد الأشياء (counting objects) والكميات (quantities).</p>
+            <div class="example">
+                <p>تبدأ من: {0, 1, 2, 3, ... ∞}</p>
+                <p>مثال: خمسة أقلام، ثلاثة دفاتر، أربعة أخوة</p>
+            </div>
+            <div class="note">
+                <p>ملاحظة: عند إضافة * إلى الرمز (N*)، فإننا نستثني الصفر من المجموعة.</p>
+            </div>
+        </div>
+
+        <div class="number-set">
+            <h3><span class="symbol">Z</span> مجموعة الأعداد الصحيحة Integer Numbers</h3>
+            <p>تشمل الأعداد الطبيعية (Natural Numbers) ومعاكساتها السالبة (Negative Numbers).</p>
+            <div class="example">
+                <p>{... -3, -2, -1, 0, 1, 2, 3, ...}</p>
+                <p>مثال: 1 معاكسه -1، 10 معاكسه -10</p>
+            </div>
+            <div class="note">
+                <p>الرمز Z مأخوذ من الكلمة الألمانية "Zahl" التي تعني "رقم".</p>
+            </div>
+        </div>
+
+        <div class="number-set">
+            <h3><span class="symbol">Q</span> مجموعة الأعداد العادية Rational Numbers</h3>
+            <p>تشمل الأعداد الصحيحة (Integers) والكسور العادية (Fractions) التي يمكن كتابتها كعدد عشري منتهٍ (Terminating Decimal) أو دوري (Periodic Decimal).</p>
+            <div class="example">
+                <p>أمثلة على الأعداد العشرية المنتهية:</p>
+                <ul>
+                    <li>1/2 = 0.5</li>
+                    <li>1/4 = 0.25</li>
+                    <li>11/8 = 1.375</li>
+                </ul>
+                <p>أمثلة على الأعداد العشرية الدورية:</p>
+                <ul>
+                    <li>1/3 = 0.333...</li>
+                    <li>9/11 = 0.8181...</li>
+                </ul>
+                <img src="image.png" alt="">
+            </div>
+            <div class="note">
+                <p>كلمة Rational تعني "منطقي" أو "عقلي".</p>
+            </div>
+            <div class="note symbol-origin">
+                <p>الرمز Q مأخوذ من الكلمة الإيطالية Quaziente والذي يعني بالعربية حاصل القسمة.</p>
+            </div>
+        </div>
+
+        <div class="number-set">
+            <h3><span class="symbol">R</span> مجموعة الأعداد الحقيقية Real Numbers</h3>
+            <p>تشمل جميع الأعداد العادية (Rational Numbers) بالإضافة إلى الأعداد غير المنطقية (Irrational Numbers).</p>
+            <div class="example">
+                <p>من أشهر الأعداد غير المنطقية:</p>
+                <ul>
+                    <li>π = 3.14159...</li>
+                    <li>√2 = 1.4142...</li>
+                    <li>e = 2.7182...</li>
+                </ul>
+            </div>
+            <img src="http://www.simply.science/images/content/math/preface/types.png" alt="">      
+
+            <div class="number-set special-number">
+                <h3><span class="symbol">π</span> العدد باي (Pi Number)</h3>
+                <p>من أشهر الأعداد غير المنطقية في الرياضيات، وله عدة أسماء:</p>
+                <div class="example">
+                    <p>الأسماء المتداولة:</p>
+                    <ul>
+                        <li>باي (Pi)</li>
+                        <li>باي π (الاسم العالمي)</li>
+                        <li>ط (في بعض المراجع العربية)</li>
+                        <li>ثابت أرخميدس (Archimedes' Constant)</li>
+                    </ul>
+                    <p>الرموز العلمية المستخدمة:</p>
+                    <ul>
+                        <li>π (الرمز الإغريقي الصغير)</li>
+                        <li>Π (الرمز الإغريقي الكبير)</li>
+                        <li>ط (الرمز العربي)</li>
+                    </ul>
+                </div>
+                <div class="note">
+                    <p>العدد π هو نسبة محيط الدائرة إلى قطرها، وهو عدد غير منتهٍ وغير دوري.</p>
+                </div>
+
+                <div class="pi-detailed-info">
+                    <button class="collapsible-button">المزيد عن العدد π (More about π)</button>
+                    <div class="collapsible-content">
+                        <div class="info-section">
+                            <h4>مقدمة عن العدد π</h4>
+                            <p>الπاي من أكتر الأعداد المستخدمة واللي منشوفها على طول بالرياضيات والفيزياء.</p>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>أصل العدد π</h4>
+                            <p>الπاي بيساوي محيط أي دائرة تقسيم قطرها. هذا يمكن استنتاجه من قانون محيط الدائرة: المحيط = 2πr.</p>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>العدد π كعدد غير نسبي</h4>
+                            <p>الπاي هو عدد Irrational أو غير نسبي، يعني المنازل بعد الفاصلة عنده ما بتنتهي أبداً وبنفس الوقت ما بتعطي أي نمط تكرار.</p>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>الπاي كزاوية</h4>
+                            <p>الπاي بيساوي 180 درجة بنظام الراديان، وهذا مرتبط بكونه يمثل نصف دورة كاملة.</p>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>تاريخ حساب π</h4>
+                            <p>طريقة أرخميدس لحساب π كانت عبقرية لعصره، حيث استخدم المضلعات المنتظمة لتقريب قيمة π.</p>
+                        </div>
+
+                        <div class="info-section">
+                            <h4>استخدامات π</h4>
+                            <ul>
+                                <li>حساب المساحات والمحيطات والأحجام</li>
+                                <li>التريغونومتري والأعداد العقدية</li>
+                                <li>الفيزياء: الموجات، القوى، والمجالات</li>
+                                <li>علم الاحتمالات والإحصاء</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Types of Numbers -->
+        <section class="content-section">
+            <h2>أنواع الأعداد | Types of Numbers</h2>
+            
+            <div class="number-set">
+                <h3><span class="symbol">P</span> العدد الدوري Periodic Number</h3>
+                <p>هو كل عدد عشري يتم فيه تكرار خانة واحدة أو أكثر بعد الفاصلة العشرية بشكل لا نهائي.</p>
+                <div class="example">
+                    <p>أمثلة:</p>
+                    <ul>
+                        <li>2/9 = 0.222...</li>
+                        <li>37/99 = 0.3737...</li>
+                        <li>244/999 = 0.244244...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="number-set">
+                <h3><span class="symbol">Prime</span> العدد الأولي Prime Number</h3>
+                <p>هو عدد طبيعي يقبل القسمة فقط على 1 وعلى نفسه.</p>
+                <div class="example">
+                    <p>الأعداد الأولية الأولى: 2, 3, 5, 7, 11, 13</p>
+                    <div class="note">ملاحظة: الرقم 1 ليس عدداً أولياً.</div>
+                </div>
+            </div>
+
+            <div class="number-set">
+                <h3><span class="symbol">F</span> العدد الكسري Fractional Number</h3>
+                <p>هو كل عدد يتألف من بسط وخط كسر ومقام.</p>
+                <div class="example">
+                    <p>مثال: 17/25</p>
+                    <ul>
+                        <li>17: البسط</li>
+                        <li>25: المقام</li>
+                    </ul>
+                    <div class="note">يُسمى أيضاً بالعدد النسبي (Rational Number)</div>
+                </div>
+            </div>
+
+            <div class="number-set">
+                <h3><span class="symbol">D</span> العدد العشري Decimal Number</h3>
+                <p>هو كل عدد له فاصلة عشرية.</p>
+                <div class="example">
+                    <p>أمثلة:</p>
+                    <ul>
+                        <li>13.05</li>
+                        <li>13.5 = 13.50 = 13.500</li>
+                        <li>13.017 ≠ 13.17</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="number-set">
+                <h3><span class="symbol">C</span> العدد العقدي Complex Number</h3>
+                <p>له الشكل a + bi حيث:</p>
+                <div class="example">
+                    <div class="complex-definition">
+                        <ul>
+                            <li><strong>a:</strong> الجزء الحقيقي (Real Part)</li>
+                            <li><strong>b:</strong> الجزء التخيلي (Imaginary Part)</li>
+                            <li><strong>i:</strong> الوحدة التخيلية (Imaginary Unit) حيث i² = -1</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="complex-examples">
+                        <p>أمثلة (Examples):</p>
+                        <ul>
+                            <li>5 + 3i → a = 5, b = 3</li>
+                            <li>2 - 4i → a = 2, b = -4</li>
+                            <li>-1 + i → a = -1, b = 1</li>
+                        </ul>
+                    </div>
+
+                    <div class="complex-image">
+                        <img src="https://c8.alamy.com/comp/2BFY07Y/complex-numbers-real-part-imaginary-part-2BFY07Y.jpg" alt="Complex Numbers Diagram" class="math-diagram">
+                        <p class="image-caption">التمثيل البياني للأعداد العقدية (Complex Numbers Visualization)</p>
+                    </div>
+
+                    <div class="note">
+                        <p><strong>التطبيقات (Applications):</strong></p>
+                        <ul>
+                            <li>الحركات الجيبية (Harmonic Motion)</li>
+                            <li>الأمواج الضوئية (Light Waves)</li>
+                            <li>الأمواج المائية (Water Waves)</li>
+                            <li>الهندسة الكهربائية (Electrical Engineering)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="number-set special-number">
+                <h3><span class="symbol">π</span> العدد π (باي)</h3>
+                <p>من أشهر الثوابت الرياضية ويعرف بعدة أسماء:</p>
+                <ul>
+                    <li>باي (Pi)</li>
+                    <li>باي π (الاسم العالمي)</li>
+                    <li>ط (في بعض المراجع العربية)</li>
+                    <li>ثابت أرخميدس (Archimedes' Constant)</li>
+                </ul>   
+                <div class="example">
+                    <ul>
+                        <li>π ≈ 3.14...</li>
+                        <li>يساوي 180 درجة في المثلثات</li>
+                    </ul>
+                    <h4>استخداماته:</h4>
+                    <ul>
+                        <li>حساب محيط ومساحة الدائرة</li>
+                        <li>حساب حجوم الأجسام (الكرة، الأسطوانة، المخروط)</li>
+                        <li>المثلثات والهندسة المستوية</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var coll = document.getElementsByClassName('collapsible-button');
+            for (var i = 0; i < coll.length; i++) {
+                coll[i].addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    var content = this.nextElementSibling;
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        content.classList.remove('active');
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        content.classList.add('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
