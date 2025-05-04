@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أساسيات علم الجبر - المجموعات (الجزء الثاني)</title>
+    <style>
+        :root {
+            --primary-color: #34495e;
+            --secondary-color: #3498db;
+            --accent-color: #16a085;
+            --background-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            --gradient-primary: linear-gradient(135deg, #34495e, #2c3e50);
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --note-bg: #e8f6f3;
+            --note-border: #16a085;
+            --example-bg: #f7f9fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius);
+            color: white;
+            box-shadow: var(--box-shadow);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header h2 {
+            font-size: 1.8rem;
+            opacity: 0.9;
+        }
+
+        .content-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--box-shadow);
+        }
+
+        .operation {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--example-bg);
+            border-radius: var(--border-radius);
+            border-right: 4px solid var(--accent-color);
+        }
+
+        .symbol {
+            font-weight: bold;
+            color: var(--accent-color);
+            padding: 0.2rem 0.5rem;
+            background: rgba(22, 160, 133, 0.1);
+            border-radius: 4px;
+        }
+
+        .example {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--secondary-color);
+        }
+
+        .note {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--note-bg);
+            border-radius: var(--border-radius);
+            border-right: 4px solid var(--note-border);
+        }
+
+        .venn-diagram {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: white;
+            border-radius: var(--border-radius);
+            border: 2px solid var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="../index.html" style="color: white; text-decoration: none; display: inline-block; margin-bottom: 1rem; background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: var(--border-radius);">← الصفحة الرئيسية</a>
+            <h1>أساسيات علم الجبر</h1>
+            <h2>المجموعات - الجزء الثاني</h2>
+        </div>
+
+        <section class="content-section">
+            <h3>العمليات على المجموعات</h3>
+
+            <div class="operation">
+                <h4>1. الاجتماع (Union) <span class="symbol">∪</span></h4>
+                <p>هي مجموعة جديدة تضم جميع عناصر المجموعتين.</p>
+                
+                <div class="example">
+                    <p>A ∪ B = {جميع العناصر الموجودة في A وفي B}</p>
+                    <p>ملاحظة: العناصر المكررة تكتب مرة واحدة فقط</p>
+                </div>
+
+                <div class="note">
+                    <p>في الدارات المنطقية: A OR B</p>
+                </div>
+            </div>
+
+            <div class="operation">
+                <h4>2. التقاطع (Intersection) <span class="symbol">∩</span></h4>
+                <p>هي مجموعة جديدة تضم فقط العناصر المشتركة بين المجموعتين.</p>
+                
+                <div class="example">
+                    <p>A ∩ B = {العناصر المشتركة بين A و B}</p>
+                </div>
+
+                <div class="note">
+                    <p>في الدارات المنطقية: A AND B</p>
+                </div>
+            </div>
+
+            <div class="operation">
+                <h4>3. الفرق (Relative Complement) <span class="symbol">\</span></h4>
+                <p>هي مجموعة تضم العناصر الموجودة في المجموعة الأولى ولا توجد في المجموعة الثانية.</p>
+                
+                <div class="example">
+                    <p>A \ B = {العناصر الموجودة في A ولا توجد في B}</p>
+                </div>
+            </div>
+
+            <div class="operation">
+                <h4>4. الفرق التناظري (Symmetric Difference) <span class="symbol">△</span></h4>
+                <p>هي مجموعة تضم العناصر الموجودة في إحدى المجموعتين ولا توجد في المجموعة الأخرى.</p>
+                
+                <div class="example">
+                    <p>A △ B = (A ∪ B) \ (A ∩ B)</p>
+                    <p>أو</p>
+                    <p>A △ B = (A \ B) ∪ (B \ A)</p>
+                </div>
+
+                <div class="note">
+                    <p>يمكن التعبير عنها أيضاً: العناصر الموجودة في اتحاد المجموعتين ما عدا العناصر المشتركة بينهما.</p>
+                </div>
+            </div>
+
+            <div class="note">
+                <h4>أهمية العمليات على المجموعات</h4>
+                <p>تستخدم هذه العمليات بشكل أساسي في:</p>
+                <ul>
+                    <li>علوم الكمبيوتر</li>
+                    <li>المعالجات</li>
+                    <li>الدارات المنطقية</li>
+                    <li>البرمجة</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

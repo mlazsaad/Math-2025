@@ -3,523 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خريطة تعلم الرياضيات من الصفر إلى الاحتراف</title>
+    <title>أساسيات علم الجبر - الصفحة الرئيسية</title>
     <style>
+        :root {
+            --primary-color: #34495e;
+            --secondary-color: #3498db;
+            --accent-color: #16a085;
+            --background-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            --gradient-primary: linear-gradient(135deg, #34495e, #2c3e50);
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --note-bg: #e8f6f3;
+            --note-border: #16a085;
+            --example-bg: #f7f9fa;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
         }
-        
+
         body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--background-color);
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 2rem;
         }
-        
-        header {
+
+        .header {
             text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: #3498db;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius);
             color: white;
-            border-radius: 8px;
+            box-shadow: var(--box-shadow);
         }
-        
-        h1 {
+
+        .header h1 {
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 1rem;
         }
-        
-        .description {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-        
-        .math-path {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-        
-        .level {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .level-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eaeaea;
-        }
-        
-        .level-title {
-            font-size: 1.5rem;
-            color: #2c3e50;
-        }
-        
-        .level-content {
-            display: none;
-            padding: 15px 0;
-        }
-        
-        .level-content.active {
-            display: block;
-        }
-        
-        .topic {
-            margin-bottom: 15px;
-            padding: 10px;
-            border-radius: 5px;
-            background-color: #f1f8ff;
-        }
-        
-        .topic h3 {
+
+        .header p {
             font-size: 1.2rem;
-            margin-bottom: 8px;
-            color: #1a5276;
+            opacity: 0.9;
         }
-        
-        .term {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-            padding: 3px 0;
+
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
-        
-        .english-term {
-            color: #2874a6;
-            font-style: italic;
+
+        .lesson-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
         }
-        
-        .progress-container {
-            position: sticky;
-            top: 20px;
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+
+        .lesson-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
         }
-        
-        .progress-bar {
-            height: 20px;
-            background-color: #e1e1e1;
-            border-radius: 10px;
-            overflow: hidden;
+
+        .lesson-list {
+            list-style: none;
         }
-        
-        .progress-fill {
-            height: 100%;
-            background-color: #27ae60;
-            width: 0%;
-            transition: width 0.5s;
+
+        .lesson-list li {
+            margin-bottom: 1rem;
         }
-        
-        .toggle-btn {
-            background-color: #3498db;
+
+        .lesson-link {
+            display: block;
+            padding: 1rem;
+            background: var(--example-bg);
+            border-radius: var(--border-radius);
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-right: 4px solid var(--secondary-color);
+        }
+
+        .lesson-link:hover {
+            background: var(--secondary-color);
             color: white;
-            border: none;
-            padding: 5px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            transform: translateX(-5px);
         }
-        
-        .toggle-btn:hover {
-            background-color: #2980b9;
-        }
-        
-        @media (max-width: 768px) {
-            .level-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .toggle-btn {
-                margin-top: 10px;
-            }
-        }
-        
-        .quiz-container {
-            background-color: #ebf5fb;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        
-        .quiz-btn {
-            background-color: #2ecc71;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background-color 0.3s;
-        }
-        
-        .quiz-btn:hover {
-            background-color: #27ae60;
+
+        .lesson-number {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-left: 0.5rem;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>خريطة تعلم الرياضيات من الصفر إلى الاحتراف</h1>
-            <p class="description">دليل شامل لتعلم الرياضيات بطريقة مبسطة مع المصطلحات العربية والإنجليزية</p>
-        </header>
-        
-        <div class="progress-container">
-            <h2>تقدمك في المسار التعليمي</h2>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progress-fill"></div>
-            </div>
-            <p id="progress-text">0% مكتمل</p>
+        <div class="header">
+            <h1>أساسيات علم الجبر</h1>
+            <p>مرحباً بك في دروس الجبر الأساسية</p>
         </div>
-        
-        <div class="math-path">
-            <!-- المستوى الأول: أساسيات الرياضيات -->
-            <div class="level" data-level="1">
-                <div class="level-header">
-                    <h2 class="level-title">المستوى الأول: أساسيات الرياضيات (Mathematics Basics)</h2>
-                    <button class="toggle-btn">عرض المحتوى</button>
-                </div>
-                <div class="level-content">
-                    <div class="topic">
-                        <h3>الأعداد والعمليات الحسابية (Numbers and Operations)</h3>
-                        <div class="term">
-                            <span>الأعداد الطبيعية</span>
-                            <span class="english-term">Natural Numbers</span>
-                        </div>
-                        <div class="term">
-                            <span>الأعداد الصحيحة</span>
-                            <span class="english-term">Integers</span>
-                        </div>
-                        <div class="term">
-                            <span>الأعداد الكسرية</span>
-                            <span class="english-term">Fractions</span>
-                        </div>
-                        <div class="term">
-                            <span>الجمع والطرح</span>
-                            <span class="english-term">Addition and Subtraction</span>
-                        </div>
-                        <div class="term">
-                            <span>الضرب والقسمة</span>
-                            <span class="english-term">Multiplication and Division</span>
-                        </div>
-                    </div>
-                    
-                    <div class="topic">
-                        <h3>الأنماط والتسلسل (Patterns and Sequences)</h3>
-                        <div class="term">
-                            <span>الأنماط العددية</span>
-                            <span class="english-term">Number Patterns</span>
-                        </div>
-                        <div class="term">
-                            <span>المتتاليات الحسابية</span>
-                            <span class="english-term">Arithmetic Sequences</span>
-                        </div>
-                    </div>
-                    
-                    <div class="quiz-container">
-                        <h3>اختبار المستوى الأول</h3>
-                        <p>قم بإجراء اختبار قصير لقياس فهمك للمفاهيم الأساسية</p>
-                        <button class="quiz-btn" onclick="startQuiz(1)">ابدأ الاختبار</button>
-                    </div>
-                </div>
+
+        <div class="lessons-grid">
+            <div class="lesson-section">
+                <h2>الدرس الأول</h2>
+                <ul class="lesson-list">
+                    <li>
+                        <a href="lesson1/number_sets.html" class="lesson-link">
+                            <span class="lesson-number">001</span>
+                            مجموعات الأعداد
+                        </a>
+                    </li>
+                </ul>
             </div>
-            
-            <!-- المستوى الثاني: الجبر الأساسي -->
-            <div class="level" data-level="2">
-                <div class="level-header">
-                    <h2 class="level-title">المستوى الثاني: الجبر الأساسي (Basic Algebra)</h2>
-                    <button class="toggle-btn">عرض المحتوى</button>
-                </div>
-                <div class="level-content">
-                    <div class="topic">
-                        <h3>المتغيرات والتعابير الجبرية (Variables and Algebraic Expressions)</h3>
-                        <div class="term">
-                            <span>المتغيرات</span>
-                            <span class="english-term">Variables</span>
-                        </div>
-                        <div class="term">
-                            <span>التعابير الجبرية</span>
-                            <span class="english-term">Algebraic Expressions</span>
-                        </div>
-                        <div class="term">
-                            <span>الحدود والمعاملات</span>
-                            <span class="english-term">Terms and Coefficients</span>
-                        </div>
-                    </div>
-                    
-                    <div class="topic">
-                        <h3>المعادلات (Equations)</h3>
-                        <div class="term">
-                            <span>المعادلات الخطية</span>
-                            <span class="english-term">Linear Equations</span>
-                        </div>
-                        <div class="term">
-                            <span>حل المعادلات من الدرجة الأولى</span>
-                            <span class="english-term">Solving First-Degree Equations</span>
-                        </div>
-                    </div>
-                    
-                    <div class="quiz-container">
-                        <h3>اختبار المستوى الثاني</h3>
-                        <p>قم بإجراء اختبار قصير لقياس فهمك للجبر الأساسي</p>
-                        <button class="quiz-btn" onclick="startQuiz(2)">ابدأ الاختبار</button>
-                    </div>
-                </div>
+
+            <div class="lesson-section">
+                <h2>الدرس الثاني</h2>
+                <ul class="lesson-list">
+                    <li>
+                        <a href="lesson2/euclidean_division.html" class="lesson-link">
+                            <span class="lesson-number">002</span>
+                            القسمة الإقليدية والعشرية
+                        </a>
+                    </li>
+                </ul>
             </div>
-            
-            <!-- المستوى الثالث: الهندسة -->
-            <div class="level" data-level="3">
-                <div class="level-header">
-                    <h2 class="level-title">المستوى الثالث: الهندسة (Geometry)</h2>
-                    <button class="toggle-btn">عرض المحتوى</button>
-                </div>
-                <div class="level-content">
-                    <div class="topic">
-                        <h3>الأشكال الهندسية (Geometric Shapes)</h3>
-                        <div class="term">
-                            <span>المثلثات</span>
-                            <span class="english-term">Triangles</span>
-                        </div>
-                        <div class="term">
-                            <span>المربعات والمستطيلات</span>
-                            <span class="english-term">Squares and Rectangles</span>
-                        </div>
-                        <div class="term">
-                            <span>الدوائر</span>
-                            <span class="english-term">Circles</span>
-                        </div>
-                    </div>
-                    
-                    <div class="topic">
-                        <h3>القياسات الهندسية (Geometric Measurements)</h3>
-                        <div class="term">
-                            <span>المساحة</span>
-                            <span class="english-term">Area</span>
-                        </div>
-                        <div class="term">
-                            <span>المحيط</span>
-                            <span class="english-term">Perimeter</span>
-                        </div>
-                        <div class="term">
-                            <span>الحجم</span>
-                            <span class="english-term">Volume</span>
-                        </div>
-                    </div>
-                    
-                    <div class="quiz-container">
-                        <h3>اختبار المستوى الثالث</h3>
-                        <p>قم بإجراء اختبار قصير لقياس فهمك للهندسة</p>
-                        <button class="quiz-btn" onclick="startQuiz(3)">ابدأ الاختبار</button>
-                    </div>
-                </div>
+
+            <div class="lesson-section">
+                <h2>الدرس الثالث</h2>
+                <ul class="lesson-list">
+                    <li>
+                        <a href="lesson3/sets_part1.html" class="lesson-link">
+                            <span class="lesson-number">003</span>
+                            المجموعات - الجزء الأول
+                        </a>
+                    </li>
+                    <li>
+                        <a href="lesson3/sets_part2.html" class="lesson-link">
+                            <span class="lesson-number">004</span>
+                            المجموعات - الجزء الثاني
+                        </a>
+                    </li>
+                </ul>
             </div>
-            
-            <!-- المستوى الرابع: الجبر المتقدم -->
-            <div class="level" data-level="4">
-                <div class="level-header">
-                    <h2 class="level-title">المستوى الرابع: الجبر المتقدم (Advanced Algebra)</h2>
-                    <button class="toggle-btn">عرض المحتوى</button>
-                </div>
-                <div class="level-content">
-                    <div class="topic">
-                        <h3>الدوال (Functions)</h3>
-                        <div class="term">
-                            <span>مفهوم الدالة</span>
-                            <span class="english-term">Function Concept</span>
-                        </div>
-                        <div class="term">
-                            <span>الدوال الخطية</span>
-                            <span class="english-term">Linear Functions</span>
-                        </div>
-                        <div class="term">
-                            <span>الدوال التربيعية</span>
-                            <span class="english-term">Quadratic Functions</span>
-                        </div>
-                    </div>
-                    
-                    <div class="topic">
-                        <h3>المعادلات المتقدمة (Advanced Equations)</h3>
-                        <div class="term">
-                            <span>حل المعادلات من الدرجة الثانية</span>
-                            <span class="english-term">Solving Quadratic Equations</span>
-                        </div>
-                        <div class="term">
-                            <span>أنظمة المعادلات</span>
-                            <span class="english-term">Systems of Equations</span>
-                        </div>
-                    </div>
-                    
-                    <div class="quiz-container">
-                        <h3>اختبار المستوى الرابع</h3>
-                        <p>قم بإجراء اختبار قصير لقياس فهمك للجبر المتقدم</p>
-                        <button class="quiz-btn" onclick="startQuiz(4)">ابدأ الاختبار</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- المستوى الخامس: حساب المثلثات -->
-            <div class="level" data-level="5">
-                <div class="level-header">
-                    <h2 class="level-title">المستوى الخامس: حساب المثلثات (Trigonometry)</h2>
-                    <button class="toggle-btn">عرض المحتوى</button>
-                </div>
-                <div class="level-content">
-                    <div class="topic">
-                        <h3>نسب المثلثات (Trigonometric Ratios)</h3>
-                        <div class="term">
-                            <span>الجيب</span>
-                            <span class="english-term">Sine</span>
-                        </div>
-                        <div class="term">
-                            <span>جيب التمام</span>
-                            <span class="english-term">Cosine</span>
-                        </div>
-                        <div class="term">
-                            <span>الظل</span>
-                            <span class="english-term">Tangent</span>
-                        </div>
-                    </div>
-                    
-                    <div class="topic">
-                        <h3>الدوال المثلثية (Trigonometric Functions)</h3>
-                        <div class="term">
-                            <span>دالة الجيب</span>
-                            <span class="english-term">Sine Function</span>
-                        </div>
-                        <div class="term">
-                            <span>دالة جيب التمام</span>
-                            <span class="english-term">Cosine Function</span>
-                        </div>
-                        <div class="term">
-                            <span>قانون الجيب وقانون جيب التمام</span>
-                            <span class="english-term">Law of Sines and Law of Cosines</span>
-                        </div>
-                    </div>
-                    
-                    <div class="quiz-container">
-                        <h3>اختبار المستوى الخامس</h3>
-                        <p>قم بإجراء اختبار قصير لقياس فهمك لحساب المثلثات</p>
-                        <button class="quiz-btn" onclick="startQuiz(5)">ابدأ الاختبار</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- المستوى السادس: حساب التفاضل والتكامل -->
-            <div class="level" data-level="6">
-                <div class="level-header">
-                    <h2 class="level-title">المستوى السادس: حساب التفاضل والتكامل (Calculus)</h2>
-                    <button class="toggle-btn">عرض المحتوى</button>
-                </div>
-                <div class="level-content">
-                    <div class="topic">
-                        <h3>التفاضل (Differentiation)</h3>
-                        <div class="term">
-                            <span>المشتقة</span>
-                            <span class="english-term">Derivative</span>
-                        </div>
-                        <div class="term">
-                            <span>قواعد الاشتقاق</span>
-                            <span class="english-term">Differentiation Rules</span>
-                        </div>
-                        <div class="term">
-                            <span>تطبيقات المشتقات</span>
-                            <span class="english-term">Applications of Derivatives</span>
-                        </div>
-                    </div>
-                    
-                    <div class="topic">
-                        <h3>التكامل (Integration)</h3>
-                        <div class="term">
-                            <span>التكامل غير المحدد</span>
-                            <span class="english-term">Indefinite Integral</span>
-                        </div>
-                        <div class="term">
-                            <span>التكامل المحدد</span>
-                            <span class="english-term">Definite Integral</span>
-                        </div>
-                        <div class="term">
-                            <span>تطبيقات التكامل</span>
-                            <span class="english-term">Applications of Integration</span>
-                        </div>
-                    </div>
-                    
-                    <div class="quiz-container">
-                        <h3>اختبار المستوى السادس</h3>
-                        <p>قم بإجراء اختبار قصير لقياس فهمك لحساب التفاضل والتكامل</p>
-                        <button class="quiz-btn" onclick="startQuiz(6)">ابدأ الاختبار</button>
-                    </div>
-                </div>
+
+            <div class="lesson-section">
+                <h2>الدرس الرابع</h2>
+                <ul class="lesson-list">
+                    <li>
+                        <a href="lesson4/fractions.html" class="lesson-link">
+                            <span class="lesson-number">008</span>
+                            الكسور
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Toggle level content
-            const toggleButtons = document.querySelectorAll('.toggle-btn');
-            
-            toggleButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const levelHeader = this.parentElement;
-                    const levelContent = levelHeader.nextElementSibling;
-                    
-                    if (levelContent.classList.contains('active')) {
-                        levelContent.classList.remove('active');
-                        this.textContent = 'عرض المحتوى';
-                    } else {
-                        levelContent.classList.add('active');
-                        this.textContent = 'إخفاء المحتوى';
-                    }
-                    
-                    updateProgress();
-                });
-            });
-            
-            // Track progress
-            function updateProgress() {
-                const totalLevels = document.querySelectorAll('.level').length;
-                const activeLevels = document.querySelectorAll('.level-content.active').length;
-                
-                const progressPercent = Math.round((activeLevels / totalLevels) * 100);
-                
-                const progressFill = document.getElementById('progress-fill');
-                const progressText = document.getElementById('progress-text');
-                
-                progressFill.style.width = progressPercent + '%';
-                progressText.textContent = progressPercent + '% مكتمل';
-            }
-            
-            // Initialize first level as open
-            document.querySelector('.level-content').classList.add('active');
-            document.querySelector('.toggle-btn').textContent = 'إخفاء المحتوى';
-            updateProgress();
-        });
-        
-        // Quiz functionality
-        function startQuiz(level) {
-            alert('سيتم بدء اختبار المستوى ' + level + ' قريباً');
-            // هنا يمكن إضافة منطق الاختبار الحقيقي
-        }
-    </script>
 </body>
 </html>
