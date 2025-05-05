@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العمليات على الأعداد العشرية | Decimal Number Operations</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .concept {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .term {
+            color: #2980b9;
+            font-weight: bold;
+        }
+        .english-term {
+            color: #27ae60;
+            font-style: italic;
+        }
+        .example {
+            background-color: #e8f4f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-right: 4px solid #3498db;
+        }
+        .note {
+            background-color: #fff3cd;
+            padding: 10px;
+            margin: 10px 0;
+            border-right: 4px solid #ffc107;
+        }
+        .method {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .decimal-grid {
+            font-family: monospace;
+            white-space: pre;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            direction: ltr;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>العمليات على الأعداد العشرية <span class="english-term">(Decimal Number Operations)</span></h1>
+
+        <div class="concept">
+            <h2>الجمع والطرح <span class="english-term">(Addition and Subtraction)</span></h2>
+            <div class="method">
+                <p><strong>خطوات الجمع والطرح</strong> <span class="english-term">(Steps for Addition and Subtraction)</span>:</p>
+                <ol>
+                    <li>نكتب الأعداد بشكل عمودي <span class="english-term">(Write numbers vertically)</span></li>
+                    <li>نرتب الفواصل العشرية تحت بعضها <span class="english-term">(Align decimal points)</span></li>
+                    <li>نضيف أصفار عند الحاجة <span class="english-term">(Add zeros if needed)</span></li>
+                </ol>
+                <div class="example">
+                    <p><strong>مثال الجمع</strong> <span class="english-term">(Addition Example)</span>:</p>
+                    <div class="decimal-grid">
+  18.7
+   2.425
+-------
+  21.125</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept">
+            <h2>الضرب <span class="english-term">(Multiplication)</span></h2>
+            <div class="method">
+                <p><strong>خطوات الضرب</strong> <span class="english-term">(Multiplication Steps)</span>:</p>
+                <ol>
+                    <li>نضرب الأعداد كأنها أعداد صحيحة <span class="english-term">(Multiply as whole numbers)</span></li>
+                    <li>نجمع عدد المنازل العشرية في العددين <span class="english-term">(Count decimal places)</span></li>
+                    <li>نضع الفاصلة في الناتج من اليمين <span class="english-term">(Place decimal point from right)</span></li>
+                </ol>
+                <div class="example">
+                    <p><strong>مثال</strong>: 1.725 × 38.75</p>
+                    <div class="decimal-grid">
+   1.725
+  38.750
+--------
+   8625
+  12075
+ 51750
+69000
+--------
+ 66.84375</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="concept">
+            <h2>القسمة <span class="english-term">(Division)</span></h2>
+            <div class="method">
+                <p><strong>خطوات القسمة</strong> <span class="english-term">(Division Steps)</span>:</p>
+                <ol>
+                    <li>نزيح الفاصلة العشرية إلى اليمين <span class="english-term">(Move decimal point right)</span></li>
+                    <li>نضيف أصفار عند الحاجة <span class="english-term">(Add zeros if needed)</span></li>
+                    <li>نقسم كأعداد صحيحة <span class="english-term">(Divide as whole numbers)</span></li>
+                </ol>
+                <div class="example">
+                    <p><strong>مثال</strong>: 2.5 ÷ 1.25</p>
+                    <p>2.5 = 250 ÷ 100</p>
+                    <p>1.25 = 125 ÷ 100</p>
+                    <p>∴ 2.5 ÷ 1.25 = 250 ÷ 125 = 2</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <h3>ملاحظات مهمة <span class="english-term">(Important Notes)</span></h3>
+            <ul>
+                <li>يمكن تحويل العدد العشري إلى كسر عادي بقوى العشرة <span class="english-term">(Convert decimal to fraction using powers of 10)</span></li>
+                <li>يمكن حذف الأصفار غير المؤثرة بعد الفاصلة العشرية <span class="english-term">(Remove trailing zeros after decimal)</span></li>
+                <li>عند القسمة، نزيح الفاصلة في البسط والمقام نفس عدد المنازل <span class="english-term">(Move decimal same places in numerator and denominator)</span></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

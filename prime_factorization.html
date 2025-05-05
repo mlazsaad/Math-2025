@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحليل العدد إلى عوامله الأولية | Prime Factorization</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .concept {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .term {
+            color: #2980b9;
+            font-weight: bold;
+        }
+        .english-term {
+            color: #27ae60;
+            font-style: italic;
+        }
+        .example {
+            background-color: #e8f4f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-right: 4px solid #3498db;
+        }
+        .note {
+            background-color: #fff3cd;
+            padding: 10px;
+            margin: 10px 0;
+            border-right: 4px solid #ffc107;
+        }
+        .method {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .steps {
+            list-style-type: none;
+            padding: 0;
+        }
+        .steps li {
+            margin: 10px 0;
+            padding-right: 20px;
+            position: relative;
+        }
+        .steps li:before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>تحليل العدد إلى عوامله الأولية <span class="english-term">(Prime Factorization)</span></h1>
+
+        <div class="concept">
+            <h2>مراجعة العدد الأولي <span class="english-term">(Prime Number Review)</span></h2>
+            <p>
+                <span class="term">العدد الأولي</span> <span class="english-term">(Prime Number)</span>
+                هو عدد طبيعي يقبل القسمة فقط على العدد 1 وعلى نفسه.
+            </p>
+            <div class="note">
+                أشهر الأعداد الأولية: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
+            </div>
+        </div>
+
+        <div class="concept">
+            <h2>الطريقة العمودية <span class="english-term">(Vertical Method)</span></h2>
+            <p>الطريقة العمودية  لتحليل الأعداد إلى عواملها الأولية.</p>
+            <p>يوجد طرق اخرى مثل.</p>
+             <div class="visual-example">
+            <img src="https://www.mathsisfun.com/numbers/images/factor-tree-48.svg" alt="Prime Factorization Tree Example" style="max-width: 100%; height: auto; display: block; margin: 20px auto; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <p class="image-caption" style="text-align: center; color: #666; margin-top: 10px;">
+                مثال توضيحي للتحليل الشجري <span class="english-term">(Tree Factorization Example)</span>
+            </p>
+            <div class="example">
+                <p><strong>مثال 1:</strong> تحليل العدد 360</p>
+                <pre>
+360 | 2
+180 | 2
+90  | 2
+45  | 3
+15  | 3
+5   | 5
+1   |
+                </pre>
+                360 = 2³ × 3² × 5
+            </div>
+
+            <div class="example">
+                <p><strong>مثال 2:</strong> تحليل العدد 819</p>
+                <pre>
+819 | 3
+273 | 3
+91  | 7
+13  | 13
+1   |
+                </pre>
+                819 = 3² × 7 × 13
+            </div>
+        </div>
+
+        <div class="method">
+            <h2>خطوات التحليل <span class="english-term">(Factorization Steps)</span></h2>
+            <ol class="steps">
+                <li>اكتب العدد في أعلى العمود <span class="english-term">(Write the number at the top)</span></li>
+                <li>ابدأ بالقسمة على أصغر عدد أولي ممكن <span class="english-term">(Start dividing by the smallest possible prime number)</span></li>
+                <li>اكتب ناتج القسمة في السطر التالي <span class="english-term">(Write the quotient on the next line)</span></li>
+                <li>كرر العملية حتى تصل إلى العدد 1 <span class="english-term">(Repeat until you reach 1)</span></li>
+                <li>اكتب النتيجة النهائية كجداء للعوامل الأولية <span class="english-term">(Write the final result as a product of prime factors)</span></li>
+            </ol>
+        </div>
+       
+        </div>
+
+        <div class="note">
+            <strong>ملاحظة</strong> <span class="english-term">(Note)</span>:
+            <p>يمكن اختيار أي عدد أولي للقسمة، لكن يُفضل البدء بأصغر عدد أولي ممكن للترتيب وسهولة العمليات الحسابية.</p>
+        </div>
+    </div>
+</body>
+</html>

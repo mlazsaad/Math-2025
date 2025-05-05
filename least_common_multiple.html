@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المضاعف المشترك الأصغر | Least Common Multiple (LCM)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .concept {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .term {
+            color: #2980b9;
+            font-weight: bold;
+        }
+        .english-term {
+            color: #27ae60;
+            font-style: italic;
+        }
+        .example {
+            background-color: #e8f4f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-right: 4px solid #3498db;
+        }
+        .note {
+            background-color: #fff3cd;
+            padding: 10px;
+            margin: 10px 0;
+            border-right: 4px solid #ffc107;
+        }
+        .method {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .steps {
+            list-style-type: none;
+            padding: 0;
+        }
+        .steps li {
+            margin: 10px 0;
+            padding-right: 20px;
+            position: relative;
+        }
+        .steps li:before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>المضاعف المشترك الأصغر <span class="english-term">(Least Common Multiple - LCM)</span></h1>
+
+        <div class="concept">
+            <h2>تعريف المضاعف المشترك الأصغر <span class="english-term">(Definition of LCM)</span></h2>
+            <p>
+                <span class="term">المضاعف المشترك الأصغر</span> لعددين أو أكثر هو أصغر عدد يقبل القسمة على كل منهما.
+            </p>
+            <div class="example">
+                <p>مثال: مضاعفات العدد 10 هي: 10, 20, 30, 40, 50, ...</p>
+                <p>مضاعفات العدد 6 هي: 6, 12, 18, 24, 30, ...</p>
+                <p>المضاعفات المشتركة هي: 30, 60, 90, ...</p>
+                <p>∴ المضاعف المشترك الأصغر هو 30</p>
+                <p>نكتب: LCM(10,6) = 30</p>
+            </div>
+        </div>
+
+        <div class="concept">
+            <h2>طريقة إيجاد المضاعف المشترك الأصغر <span class="english-term">(Finding LCM)</span></h2>
+            
+            <div class="method">
+                <h3>طريقة التحليل إلى العوامل الأولية <span class="english-term">(Prime Factorization Method)</span></h3>
+                <ol class="steps">
+                    <li>نحلل الأعداد إلى عواملها الأولية <span class="english-term">(Factor numbers into primes)</span></li>
+                    <li>نكتب الأعداد كجداء عوامل <span class="english-term">(Write as product of factors)</span></li>
+                    <li>نختار العوامل المشتركة وغير المشتركة بأكبر أس <span class="english-term">(Select factors with highest power)</span></li>
+                </ol>
+
+                <div class="example">
+                    <p><strong>مثال 1:</strong> LCM(15, 4, 7)</p>
+                    <p>15 = 3 × 5</p>
+                    <p>4 = 2²</p>
+                    <p>7 = 7</p>
+                    <p>LCM = 2² × 3 × 5 × 7 = 420</p>
+                </div>
+
+                <div class="example">
+                    <p><strong>مثال 2:</strong> LCM(24, 20)</p>
+                    <p>24 = 2³ × 3</p>
+                    <p>20 = 2² × 5</p>
+                    <p>LCM = 2³ × 3 × 5 = 120</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <h3>ملاحظات مهمة <span class="english-term">(Important Notes)</span></h3>
+            <ul>
+                <li>كل عددين أو أكثر لهما مضاعف مشترك أصغر <span class="english-term">(Every two or more numbers have an LCM)</span></li>
+                <li>إذا كان أحد العددين من مضاعفات الآخر، فالعدد الأكبر هو المضاعف المشترك الأصغر <span class="english-term">(If one number is a multiple of another, the larger number is the LCM)</span></li>
+                <li>على عكس القاسم المشترك الأكبر، لا يوجد مفهوم "الأعداد الأولية فيما بينها" في المضاعف المشترك الأصغر</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

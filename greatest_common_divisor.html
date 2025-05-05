@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>القاسم المشترك الأكبر | Greatest Common Divisor (GCD)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .concept {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .term {
+            color: #2980b9;
+            font-weight: bold;
+        }
+        .english-term {
+            color: #27ae60;
+            font-style: italic;
+        }
+        .example {
+            background-color: #e8f4f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-right: 4px solid #3498db;
+        }
+        .note {
+            background-color: #fff3cd;
+            padding: 10px;
+            margin: 10px 0;
+            border-right: 4px solid #ffc107;
+        }
+        .method {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>القاسم المشترك الأكبر <span class="english-term">(Greatest Common Divisor - GCD)</span></h1>
+
+        <div class="concept">
+            <h2>تعريف القاسم المشترك الأكبر <span class="english-term">(Definition of GCD)</span></h2>
+            <p>
+                <span class="term">القاسم المشترك الأكبر</span> لعددين هو أكبر عدد يقسم كلا العددين بدون باقٍ.
+            </p>
+            <div class="example">
+                <p>مثال: قواسم العدد 10 هي: 1, 2, 5, 10</p>
+                <p>قواسم العدد 20 هي: 1, 2, 4, 5, 10, 20</p>
+                <p>القواسم المشتركة هي: 1, 2, 5</p>
+                <p>∴ القاسم المشترك الأكبر هو 5</p>
+                <p>نكتب: GCD(10,20) = 5</p>
+            </div>
+        </div>
+
+        <div class="concept">
+            <h2>طرق إيجاد القاسم المشترك الأكبر <span class="english-term">(Methods to Find GCD)</span></h2>
+            
+            <div class="method">
+                <h3>1. طريقة التحليل إلى العوامل الأولية <span class="english-term">(Prime Factorization Method)</span></h3>
+                <div class="example">
+                    <p><strong>مثال:</strong> GCD(1400,588)</p>
+                    <p>1400 = 2³ × 5² × 7</p>
+                    <p>588 = 2² × 3 × 7²</p>
+                    <p>العوامل المشتركة بأصغر أس: 2² × 7</p>
+                    <p>∴ GCD(1400,588) = 28</p>
+                </div>
+            </div>
+
+            <div class="method">
+                <h3>2. طريقة القسمة الإقليدية <span class="english-term">(Euclidean Division Method)</span></h3>
+                <div class="example">
+                    <p><strong>مثال:</strong> GCD(270,192)</p>
+                    <pre>
+270 = 1 × 192 + 78
+192 = 2 × 78 + 36
+78 = 2 × 36 + 6
+36 = 6 × 6 + 0
+                    </pre>
+                    <p>∴ GCD(270,192) = 6</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <h3>ملاحظات مهمة <span class="english-term">(Important Notes)</span></h3>
+            <ul>
+                <li>طريقة التحليل إلى العوامل الأولية تصلح لأي عدد من الأعداد</li>
+                <li>طريقة القسمة الإقليدية تصلح فقط لعددين</li>
+                <li>إذا كان أحد العددين من مضاعفات الآخر، فالعدد الأصغر هو القاسم المشترك الأكبر</li>
+                <li>إذا كان القاسم المشترك الأكبر = 1، نقول أن العددين أوليان فيما بينهما <span class="english-term">(Coprime)</span></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
